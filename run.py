@@ -124,7 +124,7 @@ def main() -> None:
     feature_csv = frame.to_csv(index=False, lineterminator="\n")
     frame = pd.read_csv(io.StringIO(feature_csv), dtype={"sample_id": str})
     predictions = predict_feature_frame(frame, HERE / "model", device=args.device, profile=args.profile)
-    result = pd.DataFrame({"jid": ids, "prediction": predictions})
+    result = pd.DataFrame({"id": ids, "prediction": predictions})
     # Preserve Stage38's prediction CSV write/read/write serialization.
     first_csv = result.to_csv(index=False, lineterminator="\n")
     csv_bytes = pd.read_csv(io.StringIO(first_csv)).to_csv(index=False, lineterminator="\n").encode("utf-8")
