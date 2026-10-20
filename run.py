@@ -59,9 +59,13 @@ def dataset_zip(provided: Path | None, cache_dir: Path) -> Path:
         request = urllib.request.Request(DATA_URL, headers={"User-Agent": "JARVIS-V7-inference/1.0"})
         with urllib.request.urlopen(request, timeout=120) as response, pending.open("wb") as handle:
             shutil.copyfileobj(response, handle)
+        if pending.stat().st_size == 0:
+            raise ValueError("Dataset download failed or empty (0 bytes); check network/proxy or use --data-zip")
         if sha256(pending) != DATA_SHA256:
             raise ValueError("Downloaded dataset checksum mismatch")
         pending.replace(path)
+    if path.stat().st_size == 0:
+        raise ValueError("Dataset archive is empty (0 bytes); check network/proxy or use --data-zip")
     if sha256(path) != DATA_SHA256:
         raise ValueError("Dataset checksum mismatch")
     return path

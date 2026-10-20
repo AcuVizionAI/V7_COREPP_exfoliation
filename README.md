@@ -7,10 +7,12 @@ The package builds 196 composition and crystal-structure descriptors, loads the 
 | Item | Value |
 |---|---|
 | Model | `V7_COREPP_exfoliation` |
-| Reported test MAE | **37.6200** |
+| Reported test MAE | **37.6200 meV/atom** (local evaluation on the 81 benchmark test IDs) |
 | Default inference | CPU, `portable_tanh` profile |
 | Benchmark submission | [JARVIS pull request #34](https://github.com/atomgptlab/jarvis_leaderboard/pull/34) |
 | Project | [AcuVizionAI](https://acuvizionai.com/) |
+
+The reported score was computed locally for the included submission predictions. The submission record is linked above. The [JARVIS task table](https://github.com/atomgptlab/alignn/blob/main/README.md) specifies exfoliation energy in **meV/atom**.
 
 ## Quick start with Docker
 
@@ -84,7 +86,28 @@ d4c64660e9e1fa45c82bd8868a96ec10162195eed69636445972c05550d8d0d6
 
 The Docker image uses CPU PyTorch and overrides the default output and cache paths to `/output/reproduced` and `/output/cache`.
 
+## Recorded CPU and CUDA replay
+
+The submitted prediction values come from the historical CUDA inference path. Archived local checks on 13-14 October 2026 recorded:
+
+| Inference path | Test MAE (meV/atom) | Maximum absolute prediction difference from the historical reference (meV/atom) |
+|---|---:|---:|
+| Historical CUDA, NVIDIA RTX 3090 | 37.6200093531 | 0 |
+| Portable CPU, standalone replay | 37.6200084112 | 0.0000457763671875 |
+
+Both scores round to **37.6200 meV/atom**. The historical CUDA replay matched its reference CSV byte for byte in the recorded environment; the portable CPU replay produced numerically close predictions, not identical CSV bytes.
+
+These are results from the recorded environments, not a guarantee of identical output on every CPU or GPU. The archived checks preceded the submission's identifier-column rename to `id`; compare prediction values by ID when comparing files with different headers.
+
 ## Package contents
+
+To compare reproduced predictions with the submitted archive without reading benchmark targets:
+
+```bash
+.venv/bin/python verify.py AI-SinglePropertyPrediction-exfoliation_energy-dft_3d-test-mae.csv.zip reproduced/AI-SinglePropertyPrediction-exfoliation_energy-dft_3d-test-mae.csv.zip
+```
+
+The comparison requires 81 unique IDs in the same order, finite predictions, and a maximum absolute difference of `1e-4` meV/atom. It prints `PASS` or `FAIL` and returns a corresponding exit code. This checks prediction agreement; it does not compute a fresh benchmark score.
 
 | Path | Purpose |
 |---|---|
@@ -94,6 +117,7 @@ The Docker image uses CPU PyTorch and overrides the default output and cache pat
 | `model/preproc.json` | Saved feature preprocessing and model dimensions. |
 | `model/REG_STATS_fold1.json` | Saved target normalization parameters. |
 | `run.py`, `run.sh` | Inference entry points. |
+| `verify.py` | Compare reproduced predictions with the submitted ZIP. |
 | `requirements.txt`, `Dockerfile` | Dependency versions and container setup. |
 | `test_ids.json` | Ordered list of 81 benchmark test IDs. |
 | `metadata.json` | Submission and project metadata. |
@@ -104,6 +128,7 @@ The Docker image uses CPU PyTorch and overrides the default output and cache pat
 - **Package version mismatch:** use the Docker image or install the exact versions in `requirements.txt`. The entry point checks all six listed package versions.
 - **Output directory already exists:** choose a new `--out-dir`; the script preserves existing output directories.
 - **Dataset checksum mismatch:** obtain the pinned archive linked above. A different JARVIS dataset snapshot is not accepted by this entry point.
+- **Empty dataset download:** check network/proxy access or provide the pinned archive with `--data-zip`.
 - **Missing or changed model asset:** restore the weight and preprocessing files from this repository. Their checksums are verified before inference.
 - **CUDA unavailable:** use the default CPU configuration or install a compatible CUDA build of PyTorch 2.5.1.
 
