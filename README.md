@@ -40,7 +40,7 @@ Use **Python 3.10** and a dedicated environment. From the repository root, on Li
 
 ```bash
 python3.10 -m venv .venv
-.venv/bin/python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+.venv/bin/python -m pip install --no-deps torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python run.py --device cpu --profile portable_tanh --out-dir reproduced
 ```
