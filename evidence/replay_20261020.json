@@ -1,0 +1,40 @@
+{
+  "recorded_date": "2026-10-20",
+  "record_type": "Redacted summary of a locally executed replay; not an independent external review",
+  "profile": "portable_tanh",
+  "device": "cpu",
+  "status": "PASS",
+  "scope": "Fresh isolated CPU inference and prediction agreement; no fresh target scoring",
+  "fresh_clone": true,
+  "fresh_virtual_environment": true,
+  "package_commit": "9f2e80d162e8f0681d04bfe287c69e1f450b1ac9",
+  "package_checksums_verified": 9,
+  "dataset_source": "Previously downloaded public archive, verified against pinned SHA-256",
+  "dataset_sha256": "d4c64660e9e1fa45c82bd8868a96ec10162195eed69636445972c05550d8d0d6",
+  "rows_compared": 81,
+  "same_unique_ids_and_order": true,
+  "max_absolute_prediction_delta": 4.57763671875e-05,
+  "mean_absolute_prediction_delta": 6.59330391519e-06,
+  "atol": 0.0001,
+  "rows_exceeding_atol": 0,
+  "submitted_archive_sha256": "fb6300aefa036fa7c57a603dcb3613aa8d6409be3aa9cbb088c81f6feda59205",
+  "reproduced_archive_sha256": "15b4216d9a9e3c868b95ed21365bcab2209664ec7e10d2150433ddd13d761e7f",
+  "archive_bytes_identical": false,
+  "wrapper_sha256": "55563cecd741449eba41b9a22b426f973783bb337715c9396bbaf3c364eb9bfd",
+  "environment": {
+    "python": "3.10.20 | packaged by conda-forge | (main, Mar  5 2026, 16:42:22) [GCC 14.3.0]",
+    "packages": {
+      "torch": "2.5.1+cpu",
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "pymatgen": "2025.10.7",
+      "scipy": "1.15.2",
+      "monty": "2025.3.3"
+    }
+  },
+  "new_training": false,
+  "mae_recomputed": false,
+  "source_receipt_sha256": "f2c7c884a0931c6cf17ebdc7fa4a92aa0c4a2a82c602cd65bce29a0d977bb72d",
+  "redaction": "Local filesystem paths and local log references omitted.",
+  "version_note": "The package_commit identifies the executed version before this license/documentation update."
+}

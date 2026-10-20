@@ -99,6 +99,8 @@ Both scores round to **37.6200 meV/atom**. The historical CUDA replay matched it
 
 These are results from the recorded environments, not a guarantee of identical output on every CPU or GPU. The archived checks preceded the submission's identifier-column rename to `id`; compare prediction values by ID when comparing files with different headers.
 
+A further local CPU replay on **20 October 2026** is documented in [the replay evidence summary](evidence/replay_20261020.json). It used a fresh checkout and isolated environment at package commit `9f2e80d162e8f0681d04bfe287c69e1f450b1ac9`, with the pinned structure archive. All 81 IDs matched in order; the maximum prediction difference was `4.57763671875e-5` meV/atom, below the fixed `1e-4` tolerance. The archive bytes differ. This execution compared predictions without recomputing MAE; it does not replace the historical score evidence above. The inference code, model assets, and submitted predictions are unchanged in this license/documentation update.
+
 ## Package contents
 
 To compare reproduced predictions with the submitted archive without reading benchmark targets:
@@ -131,6 +133,21 @@ The comparison requires 81 unique IDs in the same order, finite predictions, and
 - **Empty dataset download:** check network/proxy access or provide the pinned archive with `--data-zip`.
 - **Missing or changed model asset:** restore the weight and preprocessing files from this repository. Their checksums are verified before inference.
 - **CUDA unavailable:** use the default CPU configuration or install a compatible CUDA build of PyTorch 2.5.1.
+
+## License
+
+This package is **not open source**. It is licensed for benchmark reproduction
+only: you may download, fork, run, and verify it to reproduce the results
+submitted to the JARVIS Leaderboard exfoliation_energy (dft_3d) task. See
+[LICENSE](LICENSE).
+
+The Prediction Files, as defined in the LICENSE (the submitted prediction CSV,
+its ZIP archive, and `metadata.json`), are contributed to the JARVIS
+Leaderboard under that repository's license.
+
+Any other use of the code or model weights, including commercial use,
+fine-tuning, or research beyond this benchmark, requires written permission:
+kamran.soleimani@acuvizionai.be.
 
 ## Contact
 

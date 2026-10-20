@@ -1,0 +1,77 @@
+V7 CORE++ Exfoliation Inference Package
+Benchmark Reproduction License, version 1.0 (20 October 2026)
+
+Copyright (c) 2026 AcuVizionAI, Belgium. All rights reserved.
+
+1. Definitions.
+   "Package" means all files in this repository at or after the commit
+   that introduced this LICENSE file, and any copy of those files that
+   AcuVizionAI distributes after that date, with the exception of the
+   Prediction Files. This license does not revoke or narrow any right
+   that was validly granted to a recipient before that date, including
+   rights arising from the GitHub Terms of Service or from a repository
+   license that governed a prior contribution.
+   "Prediction Files" means the submitted prediction archive and CSV
+   (AI-SinglePropertyPrediction-exfoliation_energy-dft_3d-test-mae.csv and
+   its .zip) and metadata.json.
+   "Benchmark" means the JARVIS Leaderboard task
+   AI-SinglePropertyPrediction-exfoliation_energy-dft_3d-test-mae.
+   "Model Assets" means the files in model/ (RAW_fold1.pth, preproc.json,
+   REG_STATS_fold1.json) and the feature extractor featurize.py.
+
+2. Grant. Subject to Section 9, AcuVizionAI grants you a non-exclusive,
+   royalty-free license to download, host, fork on GitHub, install, and run the Package,
+   unmodified, solely to reproduce, verify, or evaluate the results that
+   AcuVizionAI submitted to the Benchmark.
+
+3. Prediction Files. The Prediction Files are contributed to the JARVIS
+   Leaderboard and may be redistributed, modified, and used under the
+   license of the JARVIS Leaderboard repository. This license does not
+   restrict them.
+
+4. Restrictions. Except as permitted in Sections 2, 3, and 5, and without
+   prior written permission from AcuVizionAI, you may not:
+   (a) use the Package or its outputs for any purpose other than
+       reproduction, verification, or evaluation of the Benchmark,
+       including commercial use, product development, or research beyond
+       the Benchmark;
+   (b) modify, fine-tune, distill, retrain, or create derivative works of
+       the Model Assets;
+   (c) extract, re-implement, or publish the feature definitions in
+       featurize.py other than as needed to run the Package;
+   (d) redistribute, sublicense, or publish the Package or any part of it,
+       except as unmodified copies kept or hosted for verification of the
+       Benchmark.
+
+5. GitHub and benchmark hosting. Nothing in this license restricts
+   (a) the rights of GitHub, Inc. to host, store, display, and operate the
+   service with respect to this repository under the GitHub Terms of
+   Service; (b) the rights granted to GitHub users under those Terms,
+   including viewing and forking this repository on GitHub; or (c) the
+   right of the JARVIS Leaderboard maintainers to host and execute the
+   Package for the purpose of evaluating the Benchmark submission. This
+   license does not purport to withdraw any right already granted under
+   an existing agreement.
+
+6. Attribution. Any public report of reproduction or evaluation results
+   must cite AcuVizionAI and the repository
+   https://github.com/AcuVizionAI/V7_COREPP_exfoliation.
+
+7. Reserved rights. All rights not expressly granted are reserved by
+   AcuVizionAI. No trademark rights are granted.
+
+8. No warranty. THE PACKAGE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+   KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+   NON-INFRINGEMENT. IN NO EVENT SHALL ACUVIZIONAI BE LIABLE FOR ANY CLAIM,
+   DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR
+   OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE PACKAGE OR
+   ITS USE.
+
+9. Termination. This license terminates automatically if you breach it.
+   Upon termination you must stop using the Package and delete all copies,
+   except copies hosted on GitHub or by the JARVIS Leaderboard under
+   Section 5.
+
+10. Other uses. For any use not covered by this license, contact
+    kamran.soleimani@acuvizionai.be.
